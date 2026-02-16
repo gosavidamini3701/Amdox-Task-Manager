@@ -8,7 +8,7 @@ import com.TaskManageMent0.Security.JWTToken;
 import com.TaskManageMent0.Security.TokenBlockListService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,92 +36,130 @@ public class UserAuthService {
      @Autowired
      private TokenBlockListService tokenBlock ;
 
-    public String register(RegisterRequestDTO register)
+    public String register( RegisterRequestDTO register )
      {
-         Optional<UserAuth> existingEmail = userRepo.findByUserOfficialEmail(register.userOfficialEmail) ;
-         if(existingEmail.isPresent())
+
+         Optional < UserAuth > existingEmail = userRepo.findByUserOfficialEmail( register.userOfficialEmail ) ;
+
+         if( existingEmail.isPresent() )
          {
 
-              throw new RuntimeException(" User with this Email Already Exists ! ");
+              throw new RuntimeException( " User with this Email Already Exists ! " );
 
          }
 
 
-        UserAuth user = new UserAuth();
-        user.setUserName(register.userName);
-        user.setUserOfficialEmail(register.userOfficialEmail);
-        user.setPassword(register.password);
-        user.setRole(register.role);
+        UserAuth user = new UserAuth() ;
 
-        userRepo.save(user);
+        user.setUserName( register.userName ) ;
+
+        user.setUserOfficialEmail( register.userOfficialEmail ) ;
+
+        user.setPassword( passwordEncoder.encode( register.password ) ) ;
+
+        user.setRole( register.role ) ;
+
+        userRepo.save( user ) ;
 
         return "Registerd Sucessfully ! ";
 
      }
 
-     public AuthResponseDTO login(LoginRequestDTO login )
+    public AuthResponseDTO login( LoginRequestDTO login ) {
+
+        UserAuth user = userRepo.findByUserOfficialEmail(
+                        login.userOfficialEmail )
+                        .orElseThrow(() -> new RuntimeException( "User not found" ) ) ;
+
+
+
+        if ( !passwordEncoder.matches( login.password , user.getPassword() ) ) {
+
+            throw new RuntimeException( "Invalid Credentials!" ) ;
+        }
+
+        String token = jwt.generateToken( user ) ;
+
+        return new AuthResponseDTO( token , "Logged in successfully" ) ;
+
+    }
+
+    public String loggedOut( HttpServletRequest  request )
+    {
+
+        String header  = request.getHeader( "Authorization" ) ;
+
+        String token  = jwt.extractToken( header ) ;
+
+        if(token != null )
+        {
+            tokenBlock.BlockToken( token ) ;
+        }
+
+        return "Logged out sucessfully ! " ;
+
+    }
+
+    public void forgotPassword( ForgotPasswordReqeustDTO forgotPasswordReqeustDTO ) {
+
+
+        UserAuth user = userRepo.findByUserOfficialEmail(
+
+                forgotPasswordReqeustDTO.getUserOfficialEmail() )
+
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+
+
+        String token = UUID.randomUUID().toString() ;
+
+        user.setResetToken( token ) ;
+
+
+        LocalDateTime expiryDate = LocalDateTime.now().plusMinutes( 10 ) ;
+
+        user.setResetTokenExpire( expiryDate ) ;
+
+
+        userRepo.save( user ) ;
+
+
+        String resetLink = "http://localhost:8081/api/auth/resetPassword?token=" + token ;
+
+
+        emailService.passwordMail( user.getUserOfficialEmail() , resetLink ) ;
+
+
+        System.out.println( "Reset Link: " + resetLink );
+
+    }
+
+
+    public void resetPassword( ResetPasswordRequestDTO resetPassoword  )
      {
-          UserAuth user = userRepo.findByUserOfficialEmail(
 
-                  login.userOfficialEmail).orElseThrow(()->new RuntimeException("User not found "));
+         UserAuth user = userRepo.findByResetToken( resetPassoword.token )
+                         .orElseThrow( ()-> new RuntimeException("Invalid Token ! ") ) ;
 
-                   if(passwordEncoder.matches(login.password, user.getPassword()))
-                   {
-                        throw new RuntimeException("Invalid Credentials ! ") ;
-                   }
 
-                   String token = jwt.generateToken(user);
-                   return new AuthResponseDTO(token , "loggedin sucessfull");
-
-     }
-
-     public void forgotPassword(ForgotPasswordReqeustDTO forgotPasswordReqeustDTO )
-     {
-         UserAuth user = userRepo.findByUserOfficialEmail(
-                  forgotPasswordReqeustDTO.userOfficialEmail ).orElseThrow(()->new RuntimeException("User not found "));
-
-         String token = UUID.randomUUID().toString();
-         user.setResetToken(token);
-         user.getResetTokenExpire();
-         new Date(System.currentTimeMillis()+ 10 * 60 * 1000) ;
-
-         userRepo.save(user) ;
-         String resetLink = "http://localhost:7777/auth/reset-password?token=" ;
-         emailService.passwordMail(user.getUserOfficialEmail() , resetLink );
-         System.out.println("Reset Token "+token ) ;
-
-     }
-
-     public void resetPassword(ResetPasswordRequestDTO resetPassoword  )
-     {
-         UserAuth user = userRepo.findByResetToken(resetPassoword.token).orElseThrow(()->new RuntimeException("Invalid Token ! "));
-
-         if(user.getResetTokenExpire().isBefore( LocalDateTime.now()))
+         if( user.getResetTokenExpire().isBefore( LocalDateTime.now() ) )
          {
-              throw new RuntimeException("Token got Expired ! ");
+              throw new RuntimeException( "Token got Expired ! " ) ;
          }
 
-         user.setPassword(passwordEncoder.encode(resetPassoword.newPassword ));
-         user.setResetToken(null);
-         user.setResetTokenExpire(null);
-         userRepo.save(user) ;
+
+         user.setPassword( passwordEncoder.encode( resetPassoword.newPassword ) ) ;
+
+         user.setResetToken( null ) ;
+
+         user.setResetTokenExpire( null ) ;
+
+         userRepo.save( user ) ;
+
 
      }
 
-     public String loggedOut(HttpServletRequest  request)
-     {
-           String header  = request.getHeader("Authorization") ;
 
-           String token  = jwt.extractToken(header) ;
-
-           if(token != null )
-           {
-               tokenBlock.BlockToken(token);
-           }
-
-           return "Logged out sucessfully ! " ;
-
-     }
 
 
 

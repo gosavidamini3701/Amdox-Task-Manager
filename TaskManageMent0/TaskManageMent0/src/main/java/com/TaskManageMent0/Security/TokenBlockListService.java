@@ -12,11 +12,11 @@ public class TokenBlockListService {
 
     public void killedToken(String token )
     {
-        killedToken.add(token) ;
+        killedToken.add( token ) ;
 
     }
 
-    public boolean isBlockToken(String token )
+    public boolean isBlockToken( String token )
     {
          return killedToken.contains(token) ;
     }

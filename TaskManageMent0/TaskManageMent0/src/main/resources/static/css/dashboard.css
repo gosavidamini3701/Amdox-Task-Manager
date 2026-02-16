@@ -1,0 +1,74 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6fb;
+}
+
+/* HEADER */
+.dashboard-header {
+    background: linear-gradient(135deg, #6a19d5, #4c0bd7);
+    padding: 70px 20px;
+}
+
+/* CARDS */
+.dashboard-card,
+.stat-card,
+.board-column {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(29, 20, 43, 0.08);
+    padding: 20px;
+}
+
+/* PROFILE */
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6a19d5, #4c0bd7);
+    color: #fff;
+    font-size: 28px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+/* STATS */
+.stat-card h6 {
+    font-size: 14px;
+    color: #777;
+}
+
+.stat-card h2 {
+    font-weight: 700;
+    color: #4c0bd7;
+}
+
+/* BOARD */
+.board-column h6 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.task-card {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.task-card.done {
+    background: #e6f4ea;
+    color: #2e7d32;
+}
+
+/* FOOTER */
+.footer {
+    background: #140435ae;
+    color: #aaa;
+    padding: 15px;
+    margin-top: 60px;
+    font-size: 14px;
+}

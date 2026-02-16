@@ -15,7 +15,7 @@ public class EmailService {
     {
         SimpleMailMessage message = new SimpleMailMessage() ;
 
-        message.setTo();
+        message.setTo(to);
         message.setSubject("Reset Your Password ! ") ;
         message.setText(
                 "Click the link to your password :"+resetLink +"\n This link will expire in 10 minutes . "

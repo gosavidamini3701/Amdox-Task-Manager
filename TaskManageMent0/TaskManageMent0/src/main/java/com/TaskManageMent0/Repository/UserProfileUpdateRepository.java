@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UserProfileUpdateRepository extends JpaRepository<UserProfileUpdate ,Long > {
 
 
-    Optional<UserProfileUpdate> findByOfficialEmail(String userOfficialEmail);
+    Optional<UserProfileUpdate> findByUserOfficialEmail(String userOfficialEmail);
 
 
 }

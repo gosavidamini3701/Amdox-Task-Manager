@@ -18,25 +18,35 @@ public class UserProfileUpdateController {
     private UserProfileUpdateService  userProfileUpdateService ;
 
     @PutMapping("/updateProfile")
-    public ResponseEntity<UserProfileUpdateDTO> updateProfile(@RequestBody UserProfileUpdateDTO UserUpdate ){
+    public ResponseEntity<UserProfileUpdateDTO> updateProfile( @RequestBody UserProfileUpdateDTO UserUpdate ){
 
-        return ResponseEntity.ok(userProfileUpdateService.userProfileUpdate(UserUpdate)) ;
+        return ResponseEntity.ok( userProfileUpdateService.userProfileUpdate( UserUpdate ) ) ;
 
 
     }
 
     @GetMapping("/allProfile")
-    public ResponseEntity<List<UserProfileUpdateDTO>> getAllProfile( ){
+    public ResponseEntity <List<UserProfileUpdateDTO>>  getAllProfile( ){
 
-        return ResponseEntity.ok(userProfileUpdateService.getAllProfile());
+        return ResponseEntity.ok( userProfileUpdateService.getAllProfile() ) ;
     }
 
-    @GetMapping("/{email}")
-    public ResponseEntity<UserProfileUpdateDTO>getProfileByEmail( @PathVariable String userOfficialEmail )
+    @GetMapping("/by-email/{email}")
+    public ResponseEntity <UserProfileUpdateDTO>  getProfileByEmail (
+            @PathVariable String email ) {
+
+
+        return ResponseEntity.ok(
+                userProfileUpdateService.getProfileByUserEmail( email )
+        );
+    }
+
+
+    @GetMapping("/testPostman")
+    public String testPostman()
     {
-        return ResponseEntity.ok(userProfileUpdateService.getProfileByUserEmail(userOfficialEmail)) ;
+         return "Hey We can test with postman now ! " ;
     }
-
 
 
 

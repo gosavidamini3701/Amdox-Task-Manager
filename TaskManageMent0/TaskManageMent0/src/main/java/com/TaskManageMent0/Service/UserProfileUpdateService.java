@@ -14,27 +14,23 @@ public class UserProfileUpdateService {
     @Autowired
     private UserProfileUpdateRepository  userProfileUpdateRepo ;
 
-    public UserProfileUpdateDTO userProfileUpdate(UserProfileUpdateDTO  updateProfile )
-    {
-        if(userProfileUpdateRepo.findByOfficialEmail( updateProfile.userOfficialEmail).isPresent())
-        {
-            throw new RuntimeException("Profile already Exists "+ updateProfile.userOfficialEmail);
-        }
+    public UserProfileUpdateDTO userProfileUpdate(UserProfileUpdateDTO updateProfile) {
 
-        UserProfileUpdate profileUpdate = new UserProfileUpdate() ;
+        UserProfileUpdate existingProfile =
+                userProfileUpdateRepo.findByUserOfficialEmail(updateProfile.userOfficialEmail)
+                        .orElseThrow(() ->
+                                new RuntimeException("Profile NOT found: " + updateProfile.userOfficialEmail)
+                        );
 
-        profileUpdate.setUserName(updateProfile.userName);
-        profileUpdate.setUserOfficialEmail(updateProfile.userOfficialEmail);
-        profileUpdate.setDepartment(updateProfile.department);
+        existingProfile.setUserName(updateProfile.userName);
+        existingProfile.setDepartment(updateProfile.department);
+        existingProfile.setDesignation(updateProfile.designation);
+        existingProfile.setOrganisationName(updateProfile.organisationName);
+        existingProfile.setActive(updateProfile.active);
 
-        profileUpdate.setDesignation(updateProfile.designation);
-        profileUpdate.setOrganisationName(updateProfile.organisationName);
-        profileUpdate.setActive(true);
+        userProfileUpdateRepo.save(existingProfile);
 
-
-        userProfileUpdateRepo.save(profileUpdate);
-        return  toDTO(profileUpdate);
-
+        return toDTO(existingProfile);
     }
 
 
@@ -46,7 +42,10 @@ public class UserProfileUpdateService {
 
     public UserProfileUpdateDTO getProfileByUserEmail( String userOfficialEmail )
     {
-        UserProfileUpdate userUpdate  = userProfileUpdateRepo.findByOfficialEmail(userOfficialEmail).orElse(()-> throw new RuntimeException("User not found !"));
+        System.out.println(userOfficialEmail);
+        UserProfileUpdate userUpdate =
+                userProfileUpdateRepo.findByUserOfficialEmail(userOfficialEmail)
+                        .orElseThrow(() -> new RuntimeException("User not Found!"));
         return toDTO(userUpdate);
     }
 

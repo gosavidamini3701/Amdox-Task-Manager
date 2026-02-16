@@ -26,7 +26,7 @@ public class JWTToken {
 
          if(secret == null || secret.isEmpty()){
 
-              secret = "ReplaceWithSomeKey";
+              secret = "ThisIsAVeryStrongJwtSecretKeyWithAtLeastThirtyTwoChars";
 
 
          }

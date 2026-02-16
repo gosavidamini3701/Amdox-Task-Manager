@@ -8,10 +8,12 @@ public class TaskManageMent0Application {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(TaskManageMent0Application.class, args);
+		SpringApplication.run( TaskManageMent0Application.class, args );
 
 
-		System.out.println("Hey , Don't worry it's working fine ! ") ;
+		System.out.println( "Hey , Don't worry it's working fine ! " ) ;
+
+//		http://localhost:8081/
 
 	}
 
