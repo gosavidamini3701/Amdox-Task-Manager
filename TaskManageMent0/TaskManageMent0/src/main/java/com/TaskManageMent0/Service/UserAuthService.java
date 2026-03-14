@@ -80,7 +80,7 @@ public class UserAuthService {
 
         String token = jwt.generateToken( user ) ;
 
-        return new AuthResponseDTO( token , "Logged in successfully" ) ;
+        return new AuthResponseDTO( token ,user , "Logged in successfully" ) ;
 
     }
 
@@ -123,8 +123,9 @@ public class UserAuthService {
 
         userRepo.save( user ) ;
 
+         String resetLink = "http://localhost:5177/reset-password?token="+ token ;
 
-        String resetLink = "http://localhost:8081/api/auth/resetPassword?token=" + token ;
+       // String resetLink = "http://localhost:8081/api/auth/resetPassword?token=" + token ;
 
 
         emailService.passwordMail( user.getUserOfficialEmail() , resetLink ) ;
@@ -158,6 +159,10 @@ public class UserAuthService {
 
 
      }
+
+
+
+
 
 
 

@@ -11,9 +11,12 @@ public class TaskManageMent0Application {
 		SpringApplication.run( TaskManageMent0Application.class, args );
 
 
-		System.out.println( "Hey , Don't worry it's working fine ! " ) ;
+		System.out.println( " it's working fine ! " ) ;
 
-//		http://localhost:8081/
+//		frontEnd :
+//		http://localhost:5177
+//		Backend :
+//		http://localhost:8081
 
 	}
 

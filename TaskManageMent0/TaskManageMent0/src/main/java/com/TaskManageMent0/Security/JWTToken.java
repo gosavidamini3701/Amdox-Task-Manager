@@ -38,7 +38,7 @@ public class JWTToken {
     public String generateToken( UserAuth user )
     {
 
-        Set<Permission> permissions = PermissionConfig.getRolePermission().get(user.getRole());
+        Set<Permission> permissions = PermissionConfig.getRolePermissions().get(user.getRole());
 
 
         Date now = new Date();
