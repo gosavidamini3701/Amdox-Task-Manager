@@ -1,0 +1,787 @@
+{
+  "info": {
+    "_postman_id": "08e52939-ca83-4740-b0f6-7510c4726a4f",
+    "name": "TaskManagement",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39636879"
+  },
+  "item": [
+    {
+      "name": "TestPostman",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/update_profile/testPostman",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "update_profile",
+            "testPostman"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SignUp",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"userName\": \"Damini G\",\r\n  \"userOfficialEmail\": \"daminee931@gmail.com\",\r\n  \"password\": \"damini\",\r\n  \"role\":\"DEVELOPER\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"userOfficialEmail\": \"diya931@gmail.com\",\r\n    \"password\": \"diya\"\r\n     \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "logOut",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": " {\r\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYW1pbmVlOTMxQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIkNPTU1FTlRfQUREIiwiSVNTVUVfVklFVyIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzcwOTczOTk0LCJleHAiOjE3NzEwNjAzOTR9.QQSN3MKhGRVVcaPfqGBNxMd42Crvu_yFYbkv3HwZCKI\",\r\n    \"message\": \"Logged in successfully\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/auth/logOut",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "auth",
+            "logOut"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "forgotPassword",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"userOfficialEmail\" : \"daminee931@gmail.com\" \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/auth/forgotPassword",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "auth",
+            "forgotPassword"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "resetPassword",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"token\":\"b1566ea3-0e5c-477b-987d-ab5daddcc0d8\",\r\n    \"newPassword\":\"myra\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/auth/resetPassword",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "auth",
+            "resetPassword"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UpdateProfile",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "\r\n{\r\n    \r\n  \"userName\": \"Damini Gosavi\",\r\n  \"userOfficialEmail\": \"damini@company.com\",\r\n  \"department\": \"Engineering\",\r\n  \"designation\": \"Codevita - Ninja\",\r\n  \"organisationName\": \"TCS\",\r\n  \"active\": true\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/update_profile/updateProfile",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "update_profile",
+            "updateProfile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "allProfiles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/update_profile/allProfile",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "update_profile",
+            "allProfile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search By Email",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/update_profile/by-email/damini%40company.com",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "update_profile",
+            "by-email",
+            "damini%40company.com"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Issue",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"issueTitle\": \"Login Bug\",\r\n  \"issueKey\": \"BUG-101\",\r\n  \"description\": \"Login fails on invalid token\",\r\n  \"issueType\": \"BUG\",\r\n  \"issueStatus\": \"OPEN\",\r\n  \"priority\": \"HIGH\",\r\n  \"assigneeEmail\": \"damini@company.com\",\r\n  \"reporterEmail\": \"admin@company.com\",\r\n  \"epicId\": 1,\r\n  \"sprintId\": 2,\r\n  \"dueDate\": \"2026-02-20T10:00:00\"\r\n}\r\n\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/issues/createIssue",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "issues",
+            "createIssue"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update_issue_status",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/issues/updateStatus?id=1&performedBy=daminee931@gmail.com&issueStatus=RESOLVED",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "issues",
+            "updateStatus"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "performedBy",
+              "value": "daminee931@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "issueStatus",
+              "value": "RESOLVED",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "addComentOnIssue",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"body\": \"This issue is now resolved\",\r\n  \"authorEmail\": \"daminee931@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/issues/1/comments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "issues",
+            "1",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "search issue",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/issues/search",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "issues",
+            "search"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Workflow",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"workFlowName\": \"Approval Workflow\",\r\n  \"description\": \"Workflow for employee leave approval process\",\r\n  \"transactions\": [\r\n    {\r\n      \"name\": \"Manager Starts Review\",\r\n      \"fromStatus\": \"OPEN\",\r\n      \"toStatus\": \"IN_PROGRESS\",\r\n      \"allowedRoles\": [\"MANAGER\"]\r\n    },\r\n    {\r\n      \"name\": \"Admin Approves Leave\",\r\n      \"fromStatus\": \"IN_PROGRESS\",\r\n      \"toStatus\": \"RESOLVED\",\r\n      \"allowedRoles\": [\"ADMIN\"]\r\n    },\r\n    {\r\n      \"name\": \"Admin Rejects Leave\",\r\n      \"fromStatus\": \"IN_PROGRESS\",\r\n      \"toStatus\": \"REJECTED\",\r\n      \"allowedRoles\": [\"ADMIN\"]\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/workflows/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "workflows",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Workflows",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"workFlowName\": \"Leave Approval\",\r\n  \"description\": \"Workflow for leave approval process\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/workflows/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "workflows",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Workflow by id",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"workFlowName\": \"Updated Leave Approval\",\r\n  \"description\": \"Updated workflow for leave approval process\",\r\n  \"transactions\": [\r\n\r\n        {\r\n        \"fromStatus\": \"OPEN\",\r\n        \"toStatus\": \"IN_PROGRESS\",\r\n        \"allowedRoles\": [\"MANAGER\"]\r\n        },\r\n        {\r\n        \"fromStatus\": \"IN_PROGRESS\",\r\n        \"toStatus\": \"RESOLVED\",\r\n        \"allowedRoles\": [\"ADMIN\"]\r\n        }\r\n\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/workflows/update/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "workflows",
+            "update",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get workflow by id",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"workFlowName\": \"Leave Approval\",\r\n  \"description\": \"Workflow for leave approval process\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/workflows/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "workflows",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete workflow",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"workFlowName\": \"Updated Leave Approval\",\r\n  \"description\": \"Updated workflow for leave approval process\",\r\n  \"transactions\": []\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/workflows/delete/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "workflows",
+            "delete",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Transcation by W id",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"workFlowName\": \"Leave Approval\",\r\n  \"description\": \"Workflow for leave approval process\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/workflows/3/transactions?fromStatus=OPEN",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "workflows",
+            "3",
+            "transactions"
+          ],
+          "query": [
+            {
+              "key": "fromStatus",
+              "value": "OPEN",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Validate transcation",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n  \"MANAGER\"\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/workflows/1/validate-transaction?fromStatus=OPEN&toStatus=IN_PROGRESS",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "workflows",
+            "1",
+            "validate-transaction"
+          ],
+          "query": [
+            {
+              "key": "fromStatus",
+              "value": "OPEN"
+            },
+            {
+              "key": "toStatus",
+              "value": "IN_PROGRESS"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Workflow by name",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"workFlowName\": \"Leave Approval\",\r\n  \"description\": \"Workflow for leave approval process\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/workflows/name?name=Updated Leave Approval",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "workflows",
+            "name"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Updated Leave Approval",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create board",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Task Management Board\",\r\n  \"projectKey\": \"myp\",\r\n  \"boardType\": \"KANBAN\",\r\n  \"boardColumns\": [\r\n    {\r\n      \"name\": \"To Do\"\r\n    },\r\n    {\r\n      \"name\": \"In Progress\"\r\n    },\r\n    {\r\n      \"name\": \"Done\"\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/boards/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "boards",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Board",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Task Management Board\",\r\n  \"projectKey\": \"TMB\",\r\n  \"boardType\": \"KANBAN\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/boards/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "boards",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get boards cols",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Task Management Board\",\r\n  \"projectKey\": \"TMB\",\r\n  \"boardType\": \"KANBAN\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/boards/1/columns",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "boards",
+            "1",
+            "columns"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get board cards",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Task Management Board\",\r\n  \"projectKey\": \"TMB\",\r\n  \"boardType\": \"KANBAN\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/boards/1/cards",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "boards",
+            "1",
+            "cards"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "resetPassword",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"token\":\"557b2873-3df7-4db6-8548-48872e7880e8\",\r\n    \"newPassword\":\"myra\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/auth/resetPassword",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "auth",
+            "resetPassword"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
